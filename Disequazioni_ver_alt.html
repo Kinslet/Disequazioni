@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheda Allenamento · Disequazioni · Stile DSA</title>
+  <!-- MathJax per rendering LaTeX -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    /* ==== STILE PENSATO PER DSA: ALTA LEGGIBILITÀ, SPAZI, CARATTERI CHIARI ==== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', 'Helvetica', 'Verdana', sans-serif;
+      background-color: #f5f7fa;
+      color: #1e2b3c;
+      line-height: 1.7;
+      font-size: 1.2rem;          /* base leggermente più grande */
+      padding: 25px 15px;
+      word-spacing: 0.05em;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 30px 35px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border: 1px solid #dde3ed;
+    }
+
+    /* TITOLI — chiari, ben distanziati */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #0b2d4b;
+      border-left: 10px solid #3a7ca5;
+      padding-left: 25px;
+      letter-spacing: -0.01em;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-top: 35px;
+      margin-bottom: 20px;
+      color: #1e4e6f;
+      border-bottom: 3px solid #b0c7db;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 25px 0 15px;
+      color: #2a5779;
+    }
+
+    /* Paragrafi e blocchi di testo */
+    p {
+      margin-bottom: 1.3rem;
+      max-width: 95%;
+    }
+
+    /* Separatore elegante */
+    hr {
+      margin: 35px 0;
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, #c0d3e3, transparent);
+    }
+
+    /* Liste e spaziature */
+    ul, ol {
+      margin: 15px 0 25px 30px;
+    }
+    li {
+      margin-bottom: 10px;
+      padding-left: 8px;
+    }
+
+    /* Blocchi per esercizi e soluzioni — evidenzia con sfondo morbido */
+    .exercise-block, .solution-block {
+      background: #f8faff;
+      padding: 20px 25px;
+      border-radius: 20px;
+      margin: 25px 0;
+      border-left: 8px solid #5f9bc0;
+      box-shadow: 0 2px 6px rgba(0, 20, 40, 0.04);
+    }
+
+    .solution-block {
+      border-left-color: #2e7d5e;
+      background: #f4faf7;
+    }
+
+    /* Equazioni in linea o in display: MathJax gestirà */
+    .math-block {
+      margin: 20px 0;
+      overflow-x: auto;   /* per schermi piccoli */
+      padding: 8px 0;
+    }
+
+    /* Tabelle — semplici e ariose */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0 30px;
+      font-size: 1.1rem;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+    }
+
+    th {
+      background-color: #1e4e6f;
+      color: white;
+      font-weight: 600;
+      padding: 16px 12px;
+      text-align: left;
+    }
+
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #d4dee8;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: #f1f6fd;
+    }
+
+    /* Punteggi e note */
+    .badge-score {
+      font-weight: 700;
+      color: #0b2d4b;
+      background: #e2eaf3;
+      padding: 5px 15px;
+      border-radius: 40px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+
+    /* citazioni o box strategia */
+    .mindset-box {
+      background: #eef3f9;
+      padding: 22px 28px;
+      border-radius: 30px 10px 30px 10px;
+      margin: 25px 0;
+      font-style: normal;
+      border: 1px solid #bdd1e4;
+    }
+
+    /* box di avviso (cambio verso) */
+    .alert-note {
+      background: #fff1db;
+      padding: 12px 18px;
+      border-radius: 18px;
+      border-left: 6px solid #d97706;
+      margin: 18px 0;
+      font-weight: 500;
+    }
+
+    /* accessibilità extra: focus visibile */
+    a:focus, button:focus {
+      outline: 3px solid #3a7ca5;
+    }
+
+    /* layout mobile */
+    @media (max-width: 650px) {
+      body { font-size: 1.1rem; }
+      .container { padding: 20px 15px; }
+      h1 { font-size: 1.9rem; }
+      h2 { font-size: 1.6rem; }
+      .exercise-block, .solution-block { padding: 15px; }
+    }
+
+    /* stile per i box delle soluzioni */
+    .solution-item {
+      margin-bottom: 25px;
+    }
+    .result-box {
+      font-weight: 600;
+      background: #d9eaf5;
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 30px;
+      margin-top: 8px;
+    }
+
+    /* migliora la lettura delle formule grandi */
+    mjx-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <h1>📐 Scheda di Allenamento<br>Verso la Verifica sulle Disequazioni</h1>
+
+  <!-- SEZIONE 1: STRATEGIA E MINDSET -->
+  <div class="mindset-box">
+    <h2 style="margin-top:0; border-bottom:none; padding-bottom:0;">1. Strategia e Mindset: Oltre il Calcolo, la Logica delle Soglie</h2>
+    <p><strong>Cari classicisti,</strong> non lasciatevi ingannare dalle apparenze: risolvere una disequazione non è un mero esercizio di contabilità algebrica. Se l'equazione è la ricerca di un punto di equilibrio statico, quasi parmenideo, la disequazione è lo strumento logico con cui definiamo i <em>territori della possibilità</em>. Rappresenta la capacità di stabilire limiti, soglie e confini, una competenza che è alla base del diritto, dell'etica e di ogni ragionamento critico rigoroso.</p>
+    <p>In questa simulazione, strutturata per ricalcare fedelmente la difficoltà e la tipologia degli esercizi della nostra prossima verifica ufficiale, vi chiedo di agire con la <strong>precisione di un filologo</strong>: ogni segno e ogni parentesi sono i fonemi di una lingua che non ammette approssimazioni. Sfidate la logica, non solo i numeri.</p>
+  </div>
+
+  <hr>
+
+  <!-- ESERCIZIO 1 -->
+  <section>
+    <h2>2. Esercizio 1: Il Riscaldamento (Disequazioni Lineari)</h2>
+    <p>Iniziamo con un esercizio di pulizia formale. La corretta gestione dei segni e lo scioglimento delle parentesi sono le fondamenta su cui poggia l'intera struttura. Un errore di distrazione qui è come un anacronismo in una versione: rovina l'intera analisi.</p>
+
+    <div class="exercise-block">
+      <ol type="a" style="font-size:1.25rem;">
+        <li>\( 11x - (10 + 2x) > 3(4 + 5x) \)</li>
+        <li>\( \displaystyle \frac{2x+3}{5} - \frac{x+4}{2} \le \frac{9}{10} - \frac{x+1}{5} \)</li>
+      </ol>
+      <div class="badge-score">⭐ Punteggio: 10 punti per ciascuna risposta corretta. Totale: 20 punti.</div>
+    </div>
+    <p>Ora che abbiamo stabilito un singolo confine, vediamo come gestire la convivenza di più leggi simultanee.</p>
+  </section>
+
+  <!-- ESERCIZIO 2 -->
+  <section>
+    <h2>3. Esercizio 2: La Convivenza delle Condizioni (Sistemi di Disequazioni)</h2>
+    <p>Un sistema di disequazioni è la ricerca di una "verità comune" tra enunciati differenti. In termini logici, stiamo cercando l'intersezione degli insiemi delle soluzioni, ovvero lo spazio in cui <em>tutte</em> le condizioni sono soddisfatte contemporaneamente. La sintesi grafica non è un abbellimento estetico, ma la rappresentazione visiva della coerenza logica.</p>
+
+    <div class="exercise-block">
+      <p><strong>Risolvi il seguente sistema:</strong></p>
+      <div class="math-block">
+        \[
+        \begin{cases}
+          \dfrac{1}{2}x + \dfrac{2}{3}x > \dfrac{7}{6} \\[6pt]
+          -4x - \dfrac{1}{3} < x + 2
+        \end{cases}
+        \]
+      </div>
+      <div class="badge-score">⭐ Punteggio: 20 punti.</div>
+    </div>
+    <p>Dall'astrazione degli intervalli numerici, passiamo alla realtà fisica delle forme geometriche.</p>
+  </section>
+
+  <!-- ESERCIZIO 3 -->
+  <section>
+    <h2>4. Esercizio 3: La Logica delle Forme (Applicazione Geometrica)</h2>
+    <p>La geometria non è un disegno libero, ma un sistema di vincoli inviolabili. La <strong>Disuguaglianza Triangolare</strong> è la legge costituzionale che governa l'esistenza stessa di un triangolo: essa stabilisce che ogni lato deve essere necessariamente più corto della somma degli altri due e più lungo della loro differenza.</p>
+
+    <div class="exercise-block">
+      <p><strong>Problema:</strong> Due lati di un triangolo misurano rispettivamente \( 7 \text{ cm} \) e \( 12 \text{ cm} \).<br>
+      Determina l'intervallo di variabilità della lunghezza \( x \) del terzo lato affinché sia possibile costruire la figura.</p>
+      <div class="badge-score">⭐ Punteggio: 20 punti.</div>
+    </div>
+    <p>Dopo i vincoli della geometria, passiamo a quelli pragmatici della gestione delle risorse nella vita quotidiana.</p>
+  </section>
+
+  <!-- ESERCIZIO 4 -->
+  <section>
+    <h2>5. Esercizio 4: Matematica nel Mondo Reale (Problema di Scelta)</h2>
+    <p>Tradurre il linguaggio naturale in un modello matematico è la dote del cittadino consapevole. Saper formalizzare un limite di spesa trasforma un vago proposito in una decisione razionale.</p>
+
+    <div class="exercise-block">
+      <p><strong>Problema:</strong> Giulia e Marco decidono di fare un regalo collettivo. Marco, avendo un budget superiore, decide di spendere \( 40 \text{ €} \) in più rispetto a Giulia. Se i due stabiliscono di non superare la spesa complessiva di \( 200 \text{ €} \), quale potrà essere la quota massima versata da Giulia?</p>
+      <div class="badge-score">⭐ Punteggio: 20 punti.</div>
+    </div>
+    <p>Infine, affrontiamo lo studio delle forze contrapposte: quando il limite è definito dal rapporto tra due espressioni.</p>
+  </section>
+
+  <!-- ESERCIZIO 5 -->
+  <section>
+    <h2>6. Esercizio 5: Sopra e Sotto la Linea (Disequazione Frazionaria)</h2>
+    <p>Nelle frazioni l'incognita al denominatore è un "fantasma nella macchina": non possiamo eliminarla con un colpo di spugna, perché il suo segno influenza il comportamento dell'intera espressione. Dobbiamo studiare separatamente il Numeratore e il Denominatore per capire dove il loro rapporto rispetta la condizione richiesta.</p>
+
+    <div class="exercise-block">
+      <p><strong>Risolvi la seguente disequazione:</strong></p>
+      <div class="math-block">
+        \[
+        \frac{10 - 5x}{x + 4} < 0
+        \]
+      </div>
+      <div class="badge-score">⭐ Punteggio: 20 punti.</div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- SEZIONE SOLUZIONI RAGIONATE -->
+  <section>
+    <h2>📌 7. Soluzioni Ragionate e Commentate</h2>
+
+    <!-- Esercizio 1 soluzione -->
+    <div class="solution-block">
+      <h3 style="margin-top:0;">Esercizio 1</h3>
+      <div class="solution-item">
+        <p><strong>a.</strong> \( 11x - 10 - 2x > 12 + 15x \)<br>
+        \( \Rightarrow 9x - 10 > 12 + 15x \)<br>
+        \( \Rightarrow -6x > 22 \)</p>
+        <div class="alert-note">
+          ⚠️ <strong>Attenzione, giovani logici!</strong> Qui dobbiamo dividere per \(-6\): ricordatevi di <strong>invertire il verso</strong> della disequazione!
+        </div>
+        <p>\( x < -\dfrac{22}{6} \Rightarrow \boxed{x < -\dfrac{11}{3}} \)</p>
+      </div>
+
+      <div class="solution-item">
+        <p><strong>b.</strong> Troviamo il Minimo Comune Multiplo, che è \(10\). Mostriamo i passaggi intermedi:</p>
+        <p>\( \dfrac{2(2x+3) - 5(x+4)}{10} \le \dfrac{9 - 2(x+1)}{10} \)<br>
+        \( \Rightarrow 4x + 6 - 5x - 20 \le 9 - 2x - 2 \)<br>
+        \( -x - 14 \le 7 - 2x \Rightarrow x \le 21 \)</p>
+        <div class="result-box">✅ Risultato: \( \boxed{x \le 21} \)</div>
+      </div>
+    </div>
+
+    <!-- Esercizio 2 soluzione -->
+    <div class="solution-block">
+      <h3>Esercizio 2</h3>
+      <ul style="list-style-type: none; margin-left:0;">
+        <li><strong>Prima disequazione:</strong> \( \dfrac{3x + 4x}{6} > \dfrac{7}{6} \Rightarrow 7x > 7 \Rightarrow x > 1 \)</li>
+        <li><strong>Seconda disequazione:</strong> Spostiamo i termini in \(x\): \( -5x < 2 + \dfrac{1}{3} \Rightarrow -5x < \dfrac{7}{3} \)</li>
+      </ul>
+      <div class="alert-note">
+        ⚠️ Nuovo avviso: dividiamo per \(-5\), quindi <strong>invertiamo il verso</strong>! \( x > -\dfrac{7}{15} \)
+      </div>
+      <p><strong>Grafico del sistema:</strong> Rappresentiamo le due soluzioni. Poiché \(1\) è più grande di \(-\frac{7}{15}\), la zona in cui entrambe le linee sono continue è quella a destra di \(1\).</p>
+      <div class="result-box">✅ Risultato: \( \boxed{x > 1} \)</div>
+    </div>
+
+    <!-- Esercizio 3 soluzione -->
+    <div class="solution-block">
+      <h3>Esercizio 3</h3>
+      <p>Applichiamo la Disuguaglianza Triangolare. Il terzo lato \(x\) deve soddisfare:<br>
+      \( (12 - 7) < x < (12 + 7) \)<br>
+      \( 5 < x < 19 \)</p>
+      <p><strong>Risultato:</strong> La lunghezza deve essere compresa tra \(5 \text{ cm}\) e \(19 \text{ cm}\), estremi esclusi. Un triangolo con un lato da \(20 \text{ cm}\) qui sarebbe un'impossibilità ontologica!</p>
+      <div class="result-box">📐 \( \boxed{5 < x < 19} \) (in cm)</div>
+    </div>
+
+    <!-- Esercizio 4 soluzione -->
+    <div class="solution-block">
+      <h3>Esercizio 4</h3>
+      <p>Sia \(x\) la spesa di Giulia. Allora Marco spende \(x + 40\). La somma deve essere \(\le 200\):</p>
+      <p>\( x + (x + 40) \le 200 \Rightarrow 2x + 40 \le 200 \Rightarrow 2x \le 160 \Rightarrow x \le 80 \)</p>
+      <div class="result-box">💰 Giulia potrà versare al massimo \( \boxed{80 \text{ €}} \). Marco, di conseguenza, ne verserà \(120 \text{ €}\).</div>
+    </div>
+
+    <!-- Esercizio 5 soluzione -->
+    <div class="solution-block">
+      <h3>Esercizio 5</h3>
+      <p>Studiamo il segno di Numeratore (\(N\)) e Denominatore (\(D\)):</p>
+      <ul>
+        <li>\( N > 0 \Rightarrow 10 - 5x > 0 \Rightarrow -5x > -10 \Rightarrow x < 2 \)</li>
+        <li>\( D > 0 \Rightarrow x + 4 > 0 \Rightarrow x > -4 \)</li>
+      </ul>
+      <p><strong>Schema dei segni:</strong> Tracciamo una linea per il Numeratore (continua prima di 2, tratteggiata dopo) e una per il Denominatore (tratteggiata prima di -4, continua dopo).</p>
+      <ul>
+        <li>Per \(x < -4\): \(N(+)\) e \(D(-)\) → rapporto negativo.</li>
+        <li>Per \(-4 < x < 2\): \(N(+)\) e \(D(+)\) → rapporto positivo.</li>
+        <li>Per \(x > 2\): \(N(-)\) e \(D(+)\) → rapporto negativo.</li>
+      </ul>
+      <p>Poiché cercavamo i valori negativi (\(< 0\)):</p>
+      <div class="result-box">📉 \( \boxed{x < -4 \ \lor \ x > 2} \)</div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- GRIGLIA DI VALUTAZIONE -->
+  <section>
+    <h2>📋 8. Griglia di Valutazione e Autocontrollo</h2>
+    <p>Somma i tuoi punti e scopri se sei pronto per la sfida in classe:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Punteggio</th>
+          <th>Livello</th>
+          <th>Consiglio del Professore</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>0 – 50</strong></td>
+          <td>Insufficiente</td>
+          <td><em>Ad astra per aspera:</em> non scoraggiarti. Rivedi la gestione del MCM e i cambi di verso. La fretta è cattiva consigliera.</td>
+        </tr>
+        <tr>
+          <td><strong>51 – 70</strong></td>
+          <td>Sufficiente</td>
+          <td>Hai superato le Colonne d'Ercole, ma la tua navigazione è ancora incerta. Più attenzione ai passaggi intermedi!</td>
+        </tr>
+        <tr>
+          <td><strong>71 – 90</strong></td>
+          <td>Buono</td>
+          <td>Un'ottima prova, limpida e ben strutturata. Raffina il rigore formale per rasentare la perfezione.</td>
+        </tr>
+        <tr>
+          <td><strong>91 – 100</strong></td>
+          <td>Ottimo</td>
+          <td><em>Excellence is not an act, but a habit.</em> Hai dominato la logica delle soglie con maestria. Complimenti!</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- chiusura con suggerimento accessibile -->
+  <div style="margin-top: 40px; font-size: 1rem; color: #4e6579; border-top: 1px dashed #b3c7db; padding-top: 20px; text-align: center;">
+    <span>📖 Leggi con calma, ogni passaggio è spiegato. Se hai bisogno, rileggi le soluzioni commentate.</span>
+  </div>
+
+</div> <!-- fine container -->
+</body>
+</html>
