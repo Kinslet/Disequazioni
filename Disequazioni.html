@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🧮 Disequazioni di primo grado</title>
+  <!-- Font inclusivo per DSA (OpenDyslexic) + fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Dyslexic:wght@400;700&display=swap" rel="stylesheet">
+  <!-- MathJax per formule LaTeX -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <!-- Font Awesome per icone giocose -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Dyslexic', 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+      background: #fef9e8;  /* sfondo caldo, panna */
+      color: #1e2f4e;
+      line-height: 1.8;
+      padding: 1.5rem 1rem;
+      font-size: 1.1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(4px);
+      border-radius: 48px 48px 32px 32px;
+      padding: 2rem 2rem 3rem;
+      box-shadow: 0 20px 40px rgba(0, 20, 30, 0.1);
+      border: 3px solid #ffe5b4;
+    }
+
+    /* Accessibilità: link per saltare al contenuto */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #1e2f4e;
+      color: #fff9e0;
+      padding: 8px 16px;
+      border-radius: 0 0 20px 0;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      color: #1b4f5c;
+      text-align: center;
+      margin: 0.2rem 0 0.5rem;
+      letter-spacing: -0.5px;
+      word-break: break-word;
+      background: linear-gradient(145deg, #ffd89c, #ffe7b6);
+      display: inline-block;
+      padding: 0.5rem 2.5rem;
+      border-radius: 60px 20px 60px 20px;
+      box-shadow: 8px 8px 0 #bfd7d5;
+      border: 2px solid #3a6b6b;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin: 2.5rem 0 1.5rem;
+      color: #2a5c5c;
+      border-left: 18px solid #ffb57c;
+      padding-left: 1.5rem;
+      border-radius: 0 30px 30px 0;
+      background: #fff3df;
+      display: inline-block;
+      padding: 0.3rem 2rem 0.3rem 1.8rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      margin: 2rem 0 1rem;
+      color: #2e6b5e;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    p {
+      margin-bottom: 1.3rem;
+    }
+
+    /* evidenziazioni inclusive */
+    .box-highlight {
+      background: #d9ecdb;
+      padding: 1.5rem 2rem;
+      border-radius: 40px 12px 40px 12px;
+      border: 3px dashed #50806b;
+      margin: 2rem 0;
+      box-shadow: 0 6px 0 #bfccc2;
+    }
+
+    .fun-fact {
+      background: #fce2c1;
+      border-radius: 30px 8px 30px 8px;
+      padding: 1rem 2rem;
+      display: inline-block;
+      border: 2px solid #b48b5a;
+    }
+
+    /* tabelle chiare e spaziose */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 1.1rem;
+      background: #fffbf2;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -5px rgba(0,0,0,0.1);
+    }
+
+    th {
+      background: #5f9b8a;
+      color: white;
+      font-weight: 700;
+      padding: 16px 10px;
+      text-align: left;
+      font-size: 1.2rem;
+    }
+
+    td {
+      padding: 14px 10px;
+      border-bottom: 2px solid #d4e2d0;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* pallini per rappresentazioni */
+    .pallino-pieno {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: #1e3b3b;
+      border-radius: 50%;
+      margin: 0 4px;
+      box-shadow: inset 0 0 0 3px #f7d794;
+    }
+    .pallino-vuoto {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 4px solid #1e3b3b;
+      border-radius: 50%;
+      background: transparent;
+      margin: 0 4px;
+    }
+
+    /* codici matematici stilizzati */
+    .math-block {
+      background: #f2efe6;
+      padding: 1.2rem 2rem;
+      border-radius: 30px;
+      border-left: 12px solid #d49b6a;
+      margin: 1.8rem 0;
+      font-size: 1.2rem;
+      overflow-x: auto;
+    }
+
+    ul, ol {
+      padding-left: 2.5rem;
+      margin: 1.2rem 0;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* simboli e icone */
+    .icon-emoji {
+      font-size: 1.8rem;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* segno tabella dei segni */
+    .sign-table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .sign-table th {
+      text-align: center;
+    }
+
+    .badge-dsa {
+      background: #ffe0b9;
+      padding: 3px 12px;
+      border-radius: 40px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-style: italic;
+      color: #4d6b5f;
+    }
+
+    /* pulsanti e interazioni */
+    button, .btn-like {
+      background: #f3cd9b;
+      border: 3px solid #ac7b4b;
+      color: #1d3b33;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: default;
+      box-shadow: 0 5px 0 #ac7b4b;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      body { font-size: 1rem; padding: 0.8rem; }
+      h1 { font-size: 1.9rem; }
+      h2 { font-size: 1.6rem; }
+      .container { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Salta al contenuto principale 🧭</a>
+
+  <div class="container">
+    <header style="text-align: center;">
+      <h1>🧸 Guida Completa alle Disequazioni di Primo Grado <br> <span style="font-size:1.8rem;">📐 Dalla Teoria alla Realtà</span></h1>
+    </header>
+
+    <main id="main-content">
+      <!-- 1. Introduzione -->
+      <section>
+        <h2><i class="fas fa-sort-amount-up-alt icon-emoji"></i> 1. Introduzione alle Relazioni d'Ordine e Simbolismo</h2>
+        <p>Nel percorso della matematica algebrica, il passaggio dalle equazioni alle disequazioni rappresenta un salto strategico fondamentale. Mentre l'equazione ricerca un <strong>valore puntuale</strong> che rende vera un'uguaglianza (un "punto" sulla retta), la disequazione modella situazioni dinamiche in cui cerchiamo un <strong>intero intervallo</strong> di possibilità.</p>
+        
+        <div class="fun-fact">
+          <i class="fas fa-thermometer-half"></i> 🌡️ Nella realtà: temperatura \(T\) di un lago ghiacciato non è "zero", ma "sotto lo zero" (\(T < 0^{\circ}C\)): infiniti valori come \(-2,5^{\circ}C\), \(-5,1^{\circ}C\), \(-10,2^{\circ}C\).
+        </div>
+        <p>Comprendere le disequazioni significa imparare a gestire logicamente questi confini.</p>
+
+        <p>Le relazioni d'ordine si esprimono attraverso quattro simboli principali:</p>
+        <table>
+          <thead><tr><th>Simbolo</th><th>Significato Semantico</th><th>Esempio Numerico (dal contesto)</th></tr></thead>
+          <tbody>
+            <tr><td>\(>\)</td><td>Maggiore di</td><td>\(3 + 5 > 8 - 4\) (Vero: \(8 > 4\))</td></tr>
+            <tr><td>\(<\)</td><td>Minore di</td><td>\(3 + 1 < 2\) (Falso: \(4 < 2\))</td></tr>
+            <tr><td>\(\geq\)</td><td>Maggiore o uguale a</td><td>\(x \geq 18\) (Età per acquisto alcolici)</td></tr>
+            <tr><td>\(\leq\)</td><td>Minore o uguale a</td><td>\(e \leq 12\) (Età per calcio Under 12)</td></tr>
+          </tbody>
+        </table>
+
+        <h3><i class="fas fa-check-double"></i> Verifica della Soluzione</h3>
+        <p>Per determinare se un numero specifico è soluzione, si usa il <strong>metodo della sostituzione</strong>. Consideriamo \(4x + 5 > 3 - 3x\):</p>
+        <ul>
+          <li><i class="fas fa-arrow-right" style="color:#b1624b;"></i> Verifichiamo se \(x = 3\) è soluzione:
+            <div class="math-block">\(4(3) + 5 > 3 - 3(3) \quad\rightarrow\quad 12 + 5 > 3 - 9 \quad\rightarrow\quad 17 > -6\)<br>
+            ✅ Poiché 17 è maggiore di -6, l'affermazione è vera: \(x = 3\) è una soluzione.</div>
+          </li>
+          <li><i class="fas fa-arrow-right"></i> Verifichiamo se \(x = -\frac{1}{2}\) è soluzione:
+            <div class="math-block">\(\frac{5}{3} + 2\left(-\frac{1}{2}\right) < \frac{2}{3}\left(-\frac{1}{2}\right) - \frac{1}{2}\)<br>
+            \(\frac{5}{3} - 1 < -\frac{1}{3} - \frac{1}{2} \quad\rightarrow\quad \frac{2}{3} < -\frac{5}{6}\)<br>
+            ❌ L'affermazione è falsa: \(x = -\frac{1}{2}\) non è soluzione.</div>
+          </li>
+        </ul>
+        <p>Poiché una disequazione ammette spesso infiniti valori, dobbiamo imparare a rappresentarli graficamente. 📊</p>
+      </section>
+
+      <!-- 2. Rappresentazione -->
+      <section>
+        <h2><i class="fas fa-chart-line"></i> 2. La Rappresentazione delle Soluzioni: Retta e Intervalli</h2>
+        <p>La visualizzazione grafica è uno strumento compensativo fondamentale: trasforma un concetto astratto in un'immagine spaziale immediata. 🗺️</p>
+
+        <div class="box-highlight">
+          <h3 style="margin-top:0;">📌 Schema di Sintesi Visiva</h3>
+          <table>
+            <thead><tr><th>Relazione</th><th>Significato</th><th>Segno Grafico</th><th>Intervallo</th></tr></thead>
+            <tbody>
+              <tr><td>\(x > a\)</td><td>Tutti i numeri maggiori di \(a\)</td><td><span class="pallino-vuoto"></span> in \(a\)</td><td>\(]a; +\infty[\)</td></tr>
+              <tr><td>\(x \geq a\)</td><td>Numeri maggiori o uguali ad \(a\)</td><td><span class="pallino-pieno"></span> in \(a\)</td><td>\([a; +\infty[\)</td></tr>
+              <tr><td>\(x < b\)</td><td>Tutti i numeri minori di \(b\)</td><td><span class="pallino-vuoto"></span> in \(b\)</td><td>\(]-\infty; b[\)</td></tr>
+              <tr><td>\(a \leq x \leq b\)</td><td>Numeri compresi tra \(a\) e \(b\)</td><td>Due pallini pieni <span class="pallino-pieno"></span></td><td>\([a; b]\)</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Regole Fondamentali:</strong></p>
+          <ul>
+            <li><span class="pallino-pieno"></span> <strong>Pallino Pieno (\(\bullet\))</strong>: Il valore estremo è incluso. Parentesi quadre: \([a; b]\).</li>
+            <li><span class="pallino-vuoto"></span> <strong>Pallino Vuoto (\(\circ\))</strong>: Il valore estremo è escluso. Parentesi quadre ribaltate: \(]a; b[\).</li>
+            <li>♾️ <strong>Infinito (\(\infty\))</strong>: \(+\infty\) e \(-\infty\) non sono mai compresi (parentesi sempre ribaltata).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3. Principi di Equivalenza -->
+      <section>
+        <h2><i class="fas fa-balance-scale"></i> 3. I Principi di Equivalenza: Le Regole del Gioco</h2>
+        <p>I principi di equivalenza permettono di semplificare senza alterare le soluzioni.</p>
+        <ol style="font-weight:500;">
+          <li><strong>Primo Principio:</strong> Aggiungendo o sottraendo uno stesso numero a entrambi i membri, la disequazione resta equivalente. (Regola del trasporto: cambio segno).<br>
+          <em>Esempio:</em> \(3x + 2 < x - 5 \rightarrow 3x - x < -5 - 2\).</li>
+          <li><strong>Secondo Principio:</strong> Moltiplicando/dividendo per un numero <strong>positivo</strong> il verso resta invariato; per un numero <strong>negativo</strong> il verso <strong>deve essere cambiato</strong>.</li>
+        </ol>
+
+        <div class="fun-fact" style="background:#ffdec2;">
+          <i class="fas fa-exclamation-triangle" style="color:#c44f1e;"></i> 
+          <strong>Il "Punto Critico": Perché il verso cambia?</strong><br>
+          Partiamo da una verità: \(10 > 6\).<br>
+          • Moltiplichiamo per \(2\): \(20 > 12\) ✅<br>
+          • Moltiplichiamo per \(-3\): \(-30 \;\;?\; -18\). Sulla retta \(-30\) è a sinistra di \(-18\), quindi \(-30 < -18\). Il verso si è ribaltato! 🔄
+        </div>
+        <p>Questa consapevolezza rende la risoluzione un processo logico.</p>
+      </section>
+
+      <!-- 4. Problem Solving -->
+      <section>
+        <h2><i class="fas fa-language"></i> 4. Problem Solving: Tradurre il Mondo in Matematica</h2>
+        <p>Glossario per la traduzione dal linguaggio comune:</p>
+        <table>
+          <thead><tr><th>Linguaggio Comune</th><th>Simbolo Matematico</th><th>Esempio Reale</th></tr></thead>
+          <tbody>
+            <tr><td>Almeno / Non meno di</td><td>\(\geq\)</td><td>Peso \(l \geq 15\) kg per superare la fase.</td></tr>
+            <tr><td>Al massimo / Non superiore a</td><td>\(\leq\)</td><td>Una classe può contenere \(s \leq 24\) studenti.</td></tr>
+            <tr><td>Deve superare</td><td>\(>\)</td><td>Il colesterolo HDL deve essere \(c > 45\) mg/dL.</td></tr>
+            <tr><td>Meno di / Inferiore a</td><td>\(<\)</td><td>Ho preso un voto \(v < 6\).</td></tr>
+          </tbody>
+        </table>
+
+        <h3>🚛 Modellizzazione di un caso reale: Il Tir</h3>
+        <p><strong>Problema:</strong> Un segnale vieta il transito se la massa supera 2,5 tonnellate per asse. Un tir pesa 14 tonnellate. Quanti assi (\(n\)) deve avere?</p>
+        <div class="math-block">
+          1. Condizione: \(\frac{14}{n} \leq 2,5\)  oppure \(14 \leq 2,5 \cdot n\).<br>
+          2. Risoluzione: \(n \geq \frac{14}{2,5} \rightarrow n \geq 5,6\).<br>
+          3. Vincolo di realtà: \(n \in \mathbb{N}\). Non esistono 5,6 assi.<br>
+          4. Interpretazione: Per soddisfare, arrotondiamo all'intero superiore. Il tir deve avere <strong>almeno 6 assi</strong>.
+        </div>
+      </section>
+
+      <!-- 5. Sistemi -->
+      <section>
+        <h2><i class="fas fa-project-diagram"></i> 5. Sistemi di Disequazioni: La Ricerca dell'Intersezione</h2>
+        <p>Un sistema si usa quando più condizioni devono essere vere contemporaneamente. La soluzione è l'<strong>intersezione</strong> (il "terreno comune").</p>
+        <div class="box-highlight">
+          <strong>🔍 Procedura Operativa:</strong>
+          <ol>
+            <li>Risolvi separatamente ogni disequazione.</li>
+            <li>Rappresenta le soluzioni graficamente, una sopra l'altra.</li>
+            <li>Individua la zona in cui tutte le linee sono continue.</li>
+          </ol>
+        </div>
+        <p>Esempio (dal contesto):</p>
+        <div class="math-block">
+          \(\begin{cases} 4x + 3 > 7 - 3x \\ 5 - x > 2 + x \end{cases} \rightarrow 
+          \begin{cases} 7x > 4 \\ -2x > -3 \end{cases} \rightarrow 
+          \begin{cases} x > \frac{4}{7} \\ x < \frac{3}{2} \end{cases}\)<br>
+          La soluzione comune è l'intervallo: \(S = \left]\frac{4}{7}; \frac{3}{2}\right[\).
+        </div>
+      </section>
+
+      <!-- 6. Disequazioni Frazionarie -->
+      <section>
+        <h2><i class="fas fa-divide"></i> 6. Disequazioni Frazionarie e Studio del Segno</h2>
+        <p>Nelle disequazioni del tipo \(\frac{N(x)}{D(x)} > 0\) è vietato eliminare il denominatore! Si procede con lo <strong>studio del segno</strong>.</p>
+
+        <h3>📋 Protocollo per \(\frac{x-3}{4+x} < 0\):</h3>
+        <ol>
+          <li><strong>Studio dei fattori:</strong> Poniamo \(N > 0\) e \(D > 0\) (per convenzione).
+            <ul>
+              <li>\(N: x - 3 > 0 \rightarrow x > 3\)</li>
+              <li>\(D: 4 + x > 0 \rightarrow x > -4\)</li>
+            </ul>
+          </li>
+          <li><strong>Tabella dei Segni:</strong></li>
+        </ol>
+
+        <table class="sign-table">
+          <thead><tr><th>Termine</th><th>\(x < -4\)</th><th>\(-4 < x < 3\)</th><th>\(x > 3\)</th></tr></thead>
+          <tbody>
+            <tr><td>\(N: x-3 > 0\)</td><td style="color:#b33;">−</td><td style="color:#b33;">−</td><td style="color:#2a7a2a;">+</td></tr>
+            <tr><td>\(D: 4+x > 0\)</td><td style="color:#b33;">−</td><td style="color:#2a7a2a;">+</td><td style="color:#2a7a2a;">+</td></tr>
+            <tr style="background:#f9eec1;"><td><strong>Segno Totale</strong></td><td><strong>+</strong></td><td><strong>−</strong></td><td><strong>+</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p>3. <strong>Interpretazione:</strong> La traccia chiedeva dove la frazione fosse negativa (\(< 0\)). Guardando la riga "Segno Totale", l'intervallo con il meno è: \(S = ]-4; 3[\).</p>
+        
+        <div style="background:#e4f2e4; padding:1.5rem; border-radius:30px; margin: 2rem 0;">
+          🎉 <strong>Conclusione:</strong> Padroneggiare le disequazioni significa acquisire una forma mentis logica per interpretare limiti e possibilità. Che si tratti di budget, sicurezza stradale o parametri medici, la matematica ci offre la struttura per agire con consapevolezza entro i confini del possibile.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🧡 Creato con stile divertente e inclusivo — ogni studente è una risorsa preziosa! <br> 
+      <i class="fas fa-smile-wink"></i> Disequazioni? Ora sei tu che le “domini”! <i class="fas fa-rocket"></i></p>
+    </footer>
+  </div>
+
+  <!-- piccolo script per accessibilità aggiuntiva: focus visibile -->
+  <script>
+    (function() {
+      // migliora la leggibilità per chi usa tastiera
+      const style = document.createElement('style');
+      style.innerHTML = `*:focus-visible { outline: 4px solid #ff8c42; outline-offset: 4px; border-radius: 12px; }`;
+      document.head.appendChild(style);
+    })();
+  </script>
+</body>
+</html>
